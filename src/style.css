@@ -1,6 +1,56 @@
-body {
-    background-color: purple;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-.hello {
-    color: red;
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-list-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.todo-header,
+.todo-input-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #d0cece;
+}
+
+.todo-input-container .todo-input {
+    outline: none;
+    border: none;
+}
+
+.todo-input-container .todo-input::placeholder {
+    font-style: italic;
+}
+
+.todo-btn-container {
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    justify-content: center;
+    background-color: #f8f8f8;
+}
+
+.btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #5c5c5c;
 }

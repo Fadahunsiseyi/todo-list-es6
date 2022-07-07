@@ -49,11 +49,18 @@ todoInputContainer.addEventListener('submit', (e) => {
 
 todoLists.addEventListener('click', (e) => {
   e.preventDefault()
-  const clicked = e.target.closest('.check')
+  console.log('been clicked')
+  const clicked = e.target.closest('.remove')
   if(!clicked) return;
-  const listNum = clicked.dataset.btn;
-  const listEl = document.querySelector(`.list-${listNum}`);
-
-  listEl.querySelector('.empty-check').classList.toggle('active');
-  listEl.querySelector('.checked').classList.toggle('active');
+  const listNum = +clicked.dataset.remove;
+   const filteredTodo = todoStorage.filter((todo) => todo.index !== listNum)
+   console.log(filteredTodo, 'filtered')
+   let newTodo = []
+   filteredTodo.forEach((nTodo, i) => {
+     console.log(nTodo, i, 'hope')
+     nTodo.index = i
+     newTodo.push(nTodo)
+   })
+   localStorage.setItem('todos', JSON.stringify(newTodo))
+   displayTodo()
 })

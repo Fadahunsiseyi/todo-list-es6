@@ -20,7 +20,7 @@ const displayTodo = () => {
               <span class="empty-check active"><i class="fa-solid fa-square active"></i></span>
               <span class="checked"><i class="fa-solid fa-check"></i></span>
             </button>
-            <input type="text" class="todo" value="${todo.desc}"/>
+            <input type="text" data-desc=${todo.index} class="todo" value="${todo.desc}"/>
           </span>
           <button class="btn remove" data-remove="${todo.index}">
             <i class="fa-solid fa-trash-can"></i>
@@ -45,6 +45,17 @@ todoInputContainer.addEventListener('submit', (e) => {
     todoStorage.push(todoList)
     localStorage.setItem('todos',JSON.stringify(todoStorage))
     displayTodo()
+})
+
+todoLists.addEventListener('click', (e) => {
+  const clicked = e.target.closest('.todo')
+  if(!clicked) return;
+  clicked.addEventListener('keyup', () => {
+    const listNum = +clicked.dataset.desc
+    const findTodo = todoStorage.find(todo => todo.index === listNum)
+    findTodo.desc = clicked.value.trim()
+    localStorage.setItem('todos',JSON.stringify(todoStorage))
+  })
 })
 
 todoLists.addEventListener('click', (e) => {

@@ -14,7 +14,7 @@ const displayTodo = () => {
     todoLists.innerHTML = ''
     arrangeTodos.forEach((todo) => {
         const theTodo =  `
-        <li class="list list-${todo.index}">
+        <li class="list border-bottom list-${todo.index}">
           <span class="list-checks">
             <button class="btn check" data-btn="${todo.index}">
               <span class="empty-check active"><i class="fa-solid fa-square active"></i></span>
@@ -45,4 +45,15 @@ todoInputContainer.addEventListener('submit', (e) => {
     todoStorage.push(todoList)
     localStorage.setItem('todos',JSON.stringify(todoStorage))
     displayTodo()
+})
+
+todoLists.addEventListener('click', (e) => {
+  e.preventDefault()
+  const clicked = e.target.closest('.check')
+  if(!clicked) return;
+  const listNum = clicked.dataset.btn;
+  const listEl = document.querySelector(`.list-${listNum}`);
+
+  listEl.querySelector('.empty-check').classList.toggle('active');
+  listEl.querySelector('.checked').classList.toggle('active');
 })

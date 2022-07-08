@@ -1,39 +1,35 @@
-const todoInputContainer = document.querySelector(".todo-input-container");
-const todoInput = document.querySelector(".todo-input");
-const todoStorage = JSON.parse(localStorage.getItem("todos")) || [];
-const todoLists = document.querySelector(".todo-lists");
-console.log(todoStorage, "here!!!");
+const todoInputContainer = document.querySelector('.todo-input-container');
+const todoInput = document.querySelector('.todo-input');
+const todoStorage = JSON.parse(localStorage.getItem('todos')) || [];
+const todoLists = document.querySelector('.todo-lists');
 
 const displayTodo = () => {
-  console.log("i have been displayed");
   if (!todoStorage) return;
   const arrangeTodos = todoStorage.sort((a, b) => a.index - b.index);
-  console.log(arrangeTodos, "arrange me");
-  todoLists.innerHTML = "";
+  todoLists.innerHTML = '';
   arrangeTodos.forEach((todo) => {
     const theTodo = `
-        <li class="list border-bottom list-${todo.index}">
-          <span class="list-checks">
-            <button class="btn check" data-btn="${todo.index}">
-              <span class="empty-check active"><i class="fa-solid fa-square active"></i></span>
-              <span class="checked"><i class="fa-solid fa-check"></i></span>
+        <li class='list border-bottom list-${todo.index}'>
+          <span class='list-checks'>
+            <button class='btn check' data-btn='${todo.index}'>
+              <span class='empty-check active'><i class='fa-solid fa-square active'></i></span>
+              <span class='checked'><i class='fa-solid fa-check'></i></span>
             </button>
-            <input type="text" data-desc=${todo.index} class="todo" value="${todo.desc}"/>
+            <input type='text' data-desc=${todo.index} class='todo' value='${todo.desc}'/>
           </span>
-          <button class="btn remove" data-remove="${todo.index}">
-            <i class="fa-solid fa-trash-can"></i>
+          <button class='btn remove' data-remove='${todo.index}'>
+            <i class='fa-solid fa-trash-can'></i>
           </button>
         </>
       `;
-    todoLists.insertAdjacentHTML("beforeend", theTodo);
+    todoLists.insertAdjacentHTML('beforeend', theTodo);
   });
 };
 
-todoInputContainer.addEventListener("submit", (e) => {
-  console.log("clicked me!!");
+todoInputContainer.addEventListener('submit', (e) => {
   e.preventDefault();
   const todoInputValue = todoInput.value.trim();
-  todoInput.value = "";
+  todoInput.value = '';
   if (!todoInputValue) return;
   const todoList = {
     desc: todoInputValue,
@@ -41,36 +37,32 @@ todoInputContainer.addEventListener("submit", (e) => {
     index: todoStorage.length,
   };
   todoStorage.push(todoList);
-  localStorage.setItem("todos", JSON.stringify(todoStorage));
+  localStorage.setItem('todos', JSON.stringify(todoStorage));
   displayTodo();
 });
 
-todoLists.addEventListener("click", (e) => {
-  const clicked = e.target.closest(".todo");
+todoLists.addEventListener('click', (e) => {
+  const clicked = e.target.closest('.todo');
   if (!clicked) return;
-  clicked.addEventListener("keyup", () => {
+  clicked.addEventListener('keyup', () => {
     const listNum = +clicked.dataset.desc;
     const findTodo = todoStorage.find((todo) => todo.index === listNum);
     findTodo.desc = clicked.value.trim();
-    localStorage.setItem("todos", JSON.stringify(todoStorage));
+    localStorage.setItem('todos', JSON.stringify(todoStorage));
   });
 });
 
-todoLists.addEventListener("click", (e) => {
+todoLists.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log("been clicked");
-  const clicked = e.target.closest(".remove");
+  const clicked = e.target.closest('.remove');
   if (!clicked) return;
   const listNum = +clicked.dataset.remove;
   const filteredTodo = todoStorage.filter((todo) => todo.index !== listNum);
-  console.log(filteredTodo, "filtered");
   let newTodo = [];
-  filteredTodo.forEach((nTodo, i) => {
-    console.log(nTodo, i, "hope");
+  filteredTodo.forEach((nTodo, i) => {;
     nTodo.index = i;
     newTodo.push(nTodo);
-    console.log(newTodo, "entirely");
   });
-  e.target.closest(".list").remove();
-  localStorage.setItem("todos", JSON.stringify(newTodo));
+  e.target.closest('.list').remove();
+  localStorage.setItem('todos', JSON.stringify(newTodo));
 });

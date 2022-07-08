@@ -73,5 +73,4 @@ todoLists.addEventListener("click", (e) => {
   });
   e.target.closest(".list").remove();
   localStorage.setItem("todos", JSON.stringify(newTodo));
-  displayTodo();
 });

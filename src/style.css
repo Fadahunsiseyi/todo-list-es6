@@ -64,11 +64,9 @@ body {
   padding: 15px 3px;
   display: flex;
   justify-content: space-between;
-  /* background-color: red; */
 }
 
 .todo-lists li input {
   border: none;
   outline: none;
-  /* padding: 10px; */
 }

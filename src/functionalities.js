@@ -58,8 +58,8 @@ todoLists.addEventListener('click', (e) => {
   if (!clicked) return;
   const listNum = +clicked.dataset.remove;
   const filteredTodo = todoStorage.filter((todo) => todo.index !== listNum);
-  let newTodo = [];
-  filteredTodo.forEach((nTodo, i) => {;
+  const newTodo = [];
+  filteredTodo.forEach((nTodo, i) => {
     nTodo.index = i;
     newTodo.push(nTodo);
   });

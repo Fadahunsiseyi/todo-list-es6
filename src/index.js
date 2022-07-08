@@ -7,7 +7,7 @@ const todoLists = document.querySelector('.todo-lists');
 const todoStorage = JSON.parse(localStorage.getItem('todos')) || [];
 
 window.addEventListener('load', (e) => {
-    e.preventDefault()
+  e.preventDefault();
   if (!todoStorage) return;
   const arrangeTodos = todoStorage.sort((a, b) => a.index - b.index);
   todoLists.innerHTML = '';

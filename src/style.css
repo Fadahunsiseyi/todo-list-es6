@@ -66,6 +66,19 @@ body {
   justify-content: space-between;
 }
 
+.strike {
+  text-decoration: line-through;
+}
+
+.empty-check,
+.checked {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
 .todo-lists li input {
   border: none;
   outline: none;

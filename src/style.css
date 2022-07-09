@@ -75,16 +75,6 @@ body {
   display: none;
 }
 
-.fa-square,
-.fa-check {
-  width: 1.8rem;
-  height: 1.8rem;
-}
-
-.fa-check {
-  height: 1.6rem;
-}
-
 .active {
   display: block;
 }

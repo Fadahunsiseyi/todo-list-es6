@@ -2,7 +2,7 @@
   "name": "todo-list-es6",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000t\u0000o\u0000d\u0000o\u0000-\u0000l\u0000i\u0000s\u0000t\u0000-\u0000e\u0000s\u00006\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",

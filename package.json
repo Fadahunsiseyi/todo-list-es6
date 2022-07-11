@@ -6,8 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "webpack serve --open",
     "build": "webpack"
   },
@@ -32,7 +30,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
-    "font-awesome": "^4.7.0",
-    "gh-pages": "^4.0.0"
+    "font-awesome": "^4.7.0"
   }
 }
